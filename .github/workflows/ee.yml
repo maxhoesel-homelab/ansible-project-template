@@ -1,0 +1,37 @@
+---
+name: Build and Push Execution Environment
+on:
+  workflow_dispatch:
+  # Uncomment to enable automatic builds. Make sure that QUAY_USERNAME and QUAY_TOKEN repository secrets are set!
+  #push:
+
+jobs:
+  build:
+    name: "Build and Push Execution Environment"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out codebase
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Set up pip
+        run: pip3 install --upgrade pip
+
+      - name: Install tox
+        run: sudo apt update && sudo apt install -y tox
+
+      - name: Build Execution Environment
+        run: tox
+
+      - name: Login to quay.io
+        uses: docker/login-action@v1
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_TOKEN }}
+
+      - name: Push ansible-ee
+        run: docker push quay.io/${{ github.repository }}

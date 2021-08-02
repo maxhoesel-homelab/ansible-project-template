@@ -1,0 +1,2 @@
+homelab_awx_token: !vault |
+  Your Vault Key Goes Here

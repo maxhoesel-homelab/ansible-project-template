@@ -1,0 +1,6 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Host is provisioned
+      include_role:
+        name: maxhoesel.homelab.add_host
