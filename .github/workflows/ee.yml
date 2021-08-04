@@ -2,7 +2,7 @@
 name: Build and Push Execution Environment
 on:
   workflow_dispatch:
-  # Uncomment to enable automatic builds. Make sure that QUAY_USERNAME and QUAY_TOKEN repository secrets are set!
+  # Uncomment to enable automatic builds on push
   #push:
 
 jobs:
@@ -34,4 +34,4 @@ jobs:
           password: ${{ secrets.QUAY_TOKEN }}
 
       - name: Push ansible-ee
-        run: docker push quay.io/${{ github.repository }}
+        run: docker push quay.io/maxhoesel_homelab/${{ github.event.repository.name }}
