@@ -2,7 +2,7 @@
 version: 1
 
 build_arg_defaults:
-  EE_BASE_IMAGE: "quay.io/maxhoesel/ansible-ee:latest"
+  EE_BASE_IMAGE: "quay.io/maxhoesel_homelab/ansible-ee:latest"
 
 dependencies:
   galaxy: requirements.yml
