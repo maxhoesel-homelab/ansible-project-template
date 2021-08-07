@@ -1,6 +1,12 @@
+# Generic Virtualenv dirs
 venv
 .venv
 .tox
+
+# Artifact leftovers from ansible-builder
 Dockerfile
 _build
+
+# Ansible-runner artifacts/secrets
 artifacts
+env
