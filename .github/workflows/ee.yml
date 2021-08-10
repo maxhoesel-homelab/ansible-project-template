@@ -2,8 +2,7 @@
 name: Build and Push Execution Environment
 on:
   workflow_dispatch:
-  # Uncomment to enable automatic builds on push
-  #push:
+  push:
 
 jobs:
   build:
