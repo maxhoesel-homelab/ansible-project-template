@@ -1,5 +1,14 @@
 - hosts: all
   tasks:
+    # When writing your projects, make sure to use the roles included in maxhoesel.homelab
+    # for applications like apache2 or nginx. These roles will install them for you and enable
+    # homelab integrations like monitoring.
     - name: Hello World!
       debug:
         msg: Hello!
+
+    # configure backups with borgmatic by default.
+    # If your project doesn't store any kind of permanent data, you *can* skip this step
+    - name: Setup backups
+      include_role:
+        name: maxhoesel.homelab.setup_backup

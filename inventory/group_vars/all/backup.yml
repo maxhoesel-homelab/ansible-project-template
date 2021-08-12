@@ -1,0 +1,16 @@
+# Set this to a secret (vault-encrypted) backup password
+#backup_passphrase:
+#backup_error_mail:
+
+backup_directories:
+    - /etc
+    - /home
+    - /opt
+    - /srv
+    - /var
+# Either a list of db names or "all" to save everything
+backup_mysql_dbs: []
+backup_postgresql_dbs: []
+# Login data for the mysql account that wou want to use for backup
+backup_mysql_user: root
+#backup_mysql_password:
