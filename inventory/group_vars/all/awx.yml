@@ -1,2 +1,1 @@
-homelab_awx_token: !vault |
-  Your Vault Key Goes Here
+homelab_awx_token: "{{ lookup('hashi_vault', 'secret=secret/data/projects/template/ci-pipelne:awx_token') }}"
