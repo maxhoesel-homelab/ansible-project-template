@@ -1,0 +1,6 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Teardown hosts
+      include_role:
+        name: maxhoesel.homelab.remove_host
