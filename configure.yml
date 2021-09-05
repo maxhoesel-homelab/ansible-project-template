@@ -7,8 +7,8 @@
       debug:
         msg: Hello!
 
-    # configure backups with borgmatic by default.
-    # If your project doesn't store any kind of permanent data, you *can* skip this step
+    # Backups are enabled by default. See inventory/group_vars/all/backup
+    # for configuration options
     - name: Setup backups
       include_role:
         name: maxhoesel.homelab.setup_backup

@@ -1,6 +1,6 @@
 # Set this to a secret (vault-encrypted) backup password
-#backup_passphrase:
-#backup_error_mail:
+backup_passphrase:homelab_awx_token: "{{ lookup('hashi_vault', 'secret/data/projects/REPLACEME_PROJECT_NAME/backup:borgmatic_passphrase') }}"
+backup_error_mail: "{{ lookup('hashi_vault', 'secret/data/projects/REPLACEME_PROJECT_NAME/backup:borgmatic_email') }}"
 
 backup_directories:
     - /etc

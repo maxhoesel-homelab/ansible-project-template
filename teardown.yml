@@ -1,6 +1,7 @@
 - hosts: all
   gather_facts: false
   tasks:
+    # See inventory/group_vars/all/provisioning.yml for configuration options
     - name: Teardown hosts
       include_role:
         name: maxhoesel.homelab.remove_host

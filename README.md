@@ -1,16 +1,6 @@
-# ansible-project-template
+# REPLACEME_PROJECT_NAME
 
 Template repository for my internal Ansible project.
-
-To get started:
-
-1. Create a repository from this template
-2. Update the inventory. `group_vars/all` contains examples for all required variables to integrate your hosts into the homelab
-   - To use provisioning, update the secret path in `awx.yml` to your project
-   - To use backups, adjust the parameters in `backup.yml`.
-   - Change the parameters in `provisioning.yml` if you need a different hardware configuration
-3. Update your dependencies in `requirements.yml` and `requirements.txt`, if required
-4. Start writing playbooks! The entry point playbook is named `configure.yml`.
 
 To run a playbook locally:
 

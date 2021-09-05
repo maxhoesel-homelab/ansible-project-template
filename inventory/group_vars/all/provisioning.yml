@@ -1,6 +1,8 @@
 # Provisioning parameters used by maxhoesel.homelab.add_host.
 # See the role documentation for more information
 
+homelab_awx_token: "{{ lookup('hashi_vault', 'secret/data/projects/REPLACEME_PROJECT_NAME/ci-pipelne:awx_token') }}"
+
 # Platform. use vm_pve_kvm if you need a full virtual machine
 homelab_host_platform: vm_pve_lxc
 
