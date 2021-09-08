@@ -5,3 +5,6 @@
     - name: Teardown hosts
       include_role:
         name: maxhoesel.homelab.remove_host
+      vars:
+        # Set this to 'no' to prune backups as well
+        #homelab_host_keep_backups: yes
