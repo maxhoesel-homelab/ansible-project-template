@@ -1,28 +1,3 @@
 # Provisioning parameters used by maxhoesel.homelab.add_host.
 # See the role documentation for more information
-
 homelab_awx_token: "{{ lookup('hashi_vault', 'secret/data/projects/REPLACEME_PROJECT_NAME/ci-pipeline:awx_token') }}"
-
-# Platform. use vm_pve_kvm if you need a full virtual machine
-homelab_host_platform: vm_pve_lxc
-
-# OS and hardware parameters
-homelab_host_os: ubuntu_20
-homelab_host_cpus: 2
-homelab_host_ram: 2
-homelab_host_disk: 10
-
-# List of apps to enable monitoring for. Basic OS monitoring is always enabled by default
-homelab_host_monitoring_apps: []
-  #- apache2
-  #- MySQL
-  #- Docker
-  #- Systemd
-  #- Postgres
-  #- Redis
-  #- Nginx
-
-# See the role docs for more parameters
-homelab_host_monitoring_config:
-  docker_match_cts: 'myct*'
-  systemd_match_services: 'myservice*'
