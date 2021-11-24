@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: servers
   become: yes
   tasks:
     # When writing your projects, make sure to use the roles included in maxhoesel.homelab

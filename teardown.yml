@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: servers
   gather_facts: false
   tasks:
     # See inventory/group_vars/all/provisioning.yml for configuration options
