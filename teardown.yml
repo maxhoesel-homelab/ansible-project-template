@@ -1,6 +1,10 @@
 - hosts: servers
   gather_facts: false
   tasks:
+    - name: Remove proxy reservations
+      include_role:
+        name: maxhoesel.homelab.remove_proxy_reservation
+
     # See inventory/group_vars/all/provisioning.yml for configuration options
     - name: Teardown hosts
       include_role:
