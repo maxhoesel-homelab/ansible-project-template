@@ -1,1 +1,2 @@
 ansible_user: ansible
+project_email: REPLACEME_PROJECT_NAME.homelab@maxhoesel.de
