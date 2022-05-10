@@ -3,6 +3,8 @@ name: Build and Push Execution Environment
 on:
   workflow_dispatch:
   push:
+  schedule:
+    - cron: "4 0 * * 1,4"
 
 jobs:
   build:
