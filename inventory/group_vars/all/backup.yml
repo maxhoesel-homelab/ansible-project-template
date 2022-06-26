@@ -1,3 +1,3 @@
 # Set this to a secret (vault-encrypted) backup password
-backup_pubkey: "{{ lookup('hashi_vault', 'secret/data/projects/REPLACEME_PROJECT_NAME/backup:pubkey') }}"
-backup_error_mail: "{{ project_email }}"
+backup_passphrase: "{{ lookup('hashi_vault', 'secret/data/projects/REPLACEME_PROJECT_NAME/backup:borgmatic_passphrase') }}"
+backup_error_mail: "{{ lookup('hashi_vault', 'secret/data/projects/REPLACEME_PROJECT_NAME/backup:borgmatic_email') }}"
