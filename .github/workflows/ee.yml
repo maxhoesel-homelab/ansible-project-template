@@ -3,36 +3,32 @@ name: Build and Push Execution Environment
 on:
   workflow_dispatch:
   push:
+    paths:
+      - execution-environment.yml
+      - requirements.txt
+      - collections/requirements.yml
+      - tox.ini
+      - '.github/**'
   schedule:
-    - cron: "4 0 * * 1,4"
+    - cron: "4 0 * * 5"
 
 jobs:
-  build:
-    name: "Build and Push Execution Environment"
-    runs-on: ubuntu-latest
+  image_name:
+    name: Get Image Name
+    runs-on: ubuntu-22.04
+    outputs:
+      image_name: "${{ steps.image_name.outputs.image_name }}"
     steps:
-      - name: Check out codebase
-        uses: actions/checkout@v2
-
-      - name: Set up Python 3
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.8"
-      - name: Set up pip
-        run: pip3 install --upgrade pip
-
-      - name: Install tox
-        run: sudo apt update && sudo apt install -y tox
-
-      - name: Build Execution Environment
-        run: tox
-
-      - name: Login to quay.io
-        uses: docker/login-action@v1
-        with:
-          registry: quay.io
-          username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_TOKEN }}
-
-      - name: Push ansible-ee
-        run: docker push quay.io/maxhoesel_homelab/${{ github.event.repository.name }}
+      - id: image_name
+        run: |
+          export IMGNAME=$(python3 -c 'print("".join("${{ github.repository }}".split("/")[1]))')
+          echo "::set-output name=image_name::$IMGNAME"
+  build:
+    name: Build and Push EE
+    needs: image_name
+    uses: maxhoesel-homelab/workflows/.github/workflows/build-ct-tox.yml@main
+    with:
+      image_name: ${{ needs.image_name.outputs.image_name }}
+    secrets:
+      registry_username: "${{ secrets.QUAY_USERNAME }}"
+      registry_password: "${{ secrets.QUAY_TOKEN }}"
